@@ -9,3 +9,6 @@ def blog_detail(request):
 
 def blog_list(request):
     return render(request, 'blog_list.html')
+
+def skeletor(request):
+    return render(request, 'skeletor.html')

@@ -6,7 +6,7 @@ urlpatterns = [
     path('',views.base),
     path('detail/', views.blog_detail),
     path('list/', views.blog_list),
-    path('skelector/',views.skelector)
+    path('skelector/',views.skeletor)
     
 
 ]

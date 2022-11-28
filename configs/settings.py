@@ -55,8 +55,10 @@ ROOT_URLCONF = 'configs.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates',
-                BASE_DIR/'blog/blog_templates'],
+        'DIRS': [
+            BASE_DIR / 'hirkano/templates',
+            BASE_DIR/'hirkano/templates/blog',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

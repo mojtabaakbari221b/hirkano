@@ -9,12 +9,15 @@ from .models import (
     Contant_Us,
     Message,
 )
+from .form import(
+    MessageForm,
+)
 
 
 class IndexView(TemplateView):
     template_name = 'blog/index.html'
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, request, **kwargs):
         context = super().get_context_data(**kwargs)
 
         context.update({
@@ -25,7 +28,8 @@ class IndexView(TemplateView):
             'person': Person.objects.all(),
             'blog':Blog.objects.all(),
             'contant_us':Contant_Us.objects.all(),
-            'message':Message.objects.all()
+            'message':Message.objects.all(),
+            'messageForm':MessageForm(request.POST)
         })
 
         return context

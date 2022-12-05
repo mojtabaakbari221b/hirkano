@@ -19,7 +19,7 @@ class Selected_Title(models.Model):
 class Activity(models.Model):
     title = models.CharField(max_length=256)
     text = models.CharField(max_length=256)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='slide_show/images/')
 
 class Person(models.Model):
     image = models.ImageField()
@@ -29,7 +29,7 @@ class Person(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=256)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='slide_show/images/')
     text = models.CharField(max_length=256)
 
 class Contant_Us(models.Model):

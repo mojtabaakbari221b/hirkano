@@ -4,3 +4,11 @@ from .models import *
 
 admin.site.register(SlideShow)
 admin.site.register(Service)
+admin.site.register(Selected_Title)
+admin.site.register(Activity)
+admin.site.register(Person)
+admin.site.register(Blog)
+admin.site.register(Contant_Us)
+admin.site.register(Message)
+
+

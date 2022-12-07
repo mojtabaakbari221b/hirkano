@@ -3,7 +3,7 @@ from .models import (
     SlideShow,
     Service,
     Selected_Title,
-    Activity,
+    Projects,
     Person,
     Blog,
     Contant_Us,
@@ -20,13 +20,15 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        print(self.request.user)
+
         context.update({
             'slide_showes' : SlideShow.objects.all(),
             'services' : Service.objects.all(),
             'selected_title': Selected_Title.objects.all(),
-            'activites': Activity.objects.all(),
-            'person': Person.objects.all(),
-            'blog':Blog.objects.all(),
+            'projects': Projects.objects.all(),
+            'persons': Person.objects.all(),
+            'blogs':Blog.objects.all(),
             'contant_us':Contant_Us.objects.all(),
             'message':Message.objects.all(),
             

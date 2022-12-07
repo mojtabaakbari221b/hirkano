@@ -16,7 +16,7 @@ class Selected_Title(models.Model):
     title = models.CharField(max_length=256)
     banner = models.CharField(max_length=256)
 
-class Activity(models.Model):
+class Projects(models.Model):
     title = models.CharField(max_length=256)
     text = models.CharField(max_length=256)
     image = models.ImageField(upload_to='slide_show/images/')
@@ -25,7 +25,10 @@ class Person(models.Model):
     image = models.ImageField()
     name = models.CharField(max_length=256)
     role = models.CharField(max_length=256)
-    Social_Id = models.CharField(max_length=256)
+    Twiter_Id = models.CharField(max_length=256)
+    FaceBook_Id = models.CharField(max_length=256)
+    Gmail_Id = models.CharField(max_length=256)
+    Instagram_Id = models.CharField(max_length=256)
 
 class Blog(models.Model):
     title = models.CharField(max_length=256)

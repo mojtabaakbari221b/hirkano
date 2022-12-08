@@ -1,4 +1,5 @@
 from django.views.generic.base import TemplateView
+from .form import MessageForm
 from .models import (
     SlideShow,
     Service,
@@ -20,7 +21,12 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        print(self.request.user)
+        if self.request.method == 'POST':
+            form = MessageForm(self.request.POST)
+            if form.is_valid:
+                Message.objects.create(name=form.data['name'], email=form.data['email'], title=form.data['title'], message=form.data['message'])
+            else:
+                pass
 
         context.update({
             'slide_showes' : SlideShow.objects.all(),
@@ -31,7 +37,8 @@ class IndexView(TemplateView):
             'blogs':Blog.objects.all(),
             'contant_us':Contant_Us.objects.all(),
             'message':Message.objects.all(),
-            
+            'form': MessageForm,
         })
 
         return context
+

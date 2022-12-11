@@ -24,9 +24,9 @@ class ContextMixin :
             'selected_title': Selected_Title.objects.all(),
             'projects': Projects.objects.all(),
             'persons': Person.objects.all(),
-            'HappyClient':HappyClient.objects.all(),
-            'blogs':Blog.objects.all(),
-            'message':Message.objects.all(),
+            'happy_clinets': HappyClient.objects.all(),
+            'blogs': Blog.objects.all(),
+            'message': Message.objects.all(),
         })
 
         return context

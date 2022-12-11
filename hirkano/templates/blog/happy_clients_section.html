@@ -1,4 +1,4 @@
-{% if happy_client %}
+{% if happy_clinets %}
 <section class="ftco-section testimony-section" id="testimony-section">
     <div class="container">
        <div class="row justify-content-center pb-3">
@@ -9,18 +9,18 @@
        <div class="row ftco-animate justify-content-center">
           <div class="col-md-12">
              <div class="carousel-testimony owl-carousel ftco-owl">
-                {% for happy_clients in happy_client %}
+                {% for happy_client in happy_clinets %}
                 <div class="item">
                    <div class="testimony-wrap text-center py-4 pb-5">
-                      <div class="user-img" style="background-image: url(/media/{{happy_clients.image}})">
+                      <div class="user-img" style="background-image: url(/media/{{happy_client.image}})">
                          <span class="quote d-flex align-items-center justify-content-center">
                          <i class="icon-quote-left"></i>
                          </span>
                       </div>
                       <div class="text px-4 pb-5">
-                         <p class="mb-4">{{ happy_clients.text }}</p>
-                         <p class="name">{{ happy_clients.author }}</p>
-                         <span class="position">{{ happy_clients.role }}</span>
+                         <p class="mb-4">{{ happy_client.text }}</p>
+                         <p class="name">{{ happy_client.author }}</p>
+                         <span class="position">{{ happy_client.role }}</span>
                       </div>
                    </div>
                 </div>

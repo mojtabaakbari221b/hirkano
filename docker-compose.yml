@@ -14,8 +14,6 @@ services:
     restart: always
     ports:
       - "8010:8010"
-    networks:
-      - hirkano_network
     expose:
       - 8010
 
@@ -26,13 +24,4 @@ volumes:
       true
   hirkano_media_volume:
     external:
-      true
-  hirkano_postgresql_volume:
-    external:
-        true
-
-
-networks:
-  hirkano_network:     
-    external: 
       true

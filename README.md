@@ -4,7 +4,6 @@
 ```
 $ docker volume create hirkano_static_volume
 $ docker volume create hirkano_media_volume
-$ docker volume create hirkano_postgresql_volume
 ```
 ```
 $ docker network create hirkano_network

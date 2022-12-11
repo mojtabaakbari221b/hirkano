@@ -10,5 +10,6 @@ admin.site.register(Person)
 admin.site.register(Blog)
 admin.site.register(Contant_Us)
 admin.site.register(Message)
+admin.site.register(Happy_Client)
 
 

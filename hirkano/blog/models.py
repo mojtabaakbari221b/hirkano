@@ -30,6 +30,12 @@ class Person(models.Model):
     Gmail_Id = models.CharField(max_length=256)
     Instagram_Id = models.CharField(max_length=256)
 
+class Happy_Client(models.Model):
+    image = models.ImageField(upload_to='slide_show/images/')
+    text = models.CharField(max_length=256)
+    author = models.CharField(max_length=256)
+    role = models.CharField(max_length=256)
+
 class Blog(models.Model):
     title = models.CharField(max_length=256)
     image = models.ImageField(upload_to='slide_show/images/')

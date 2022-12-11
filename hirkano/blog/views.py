@@ -1,6 +1,7 @@
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from .form import MessageForm
 from .models import (
     SlideShow,
@@ -8,6 +9,7 @@ from .models import (
     Selected_Title,
     Projects,
     Person,
+    Happy_Client,
     Blog,
     Contant_Us,
     Message,
@@ -17,25 +19,18 @@ from .form import(
 )
 
 
-class IndexView(TemplateView):
-    template_name = 'blog/index.html'
-
+class ContextMixin :
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        #if self.request.method == 'POST':
-         #   form = MessageForm(self.request.POST)
-          #  if form.is_valid:
-           #     Message.objects.create(name=form.data['name'], email=form.data['email'], title=form.data['title'], message=form.data['message'])
-            #else:
-             #  pass
-
+   
+        
         context.update({
             'slide_showes' : SlideShow.objects.all(),
             'services' : Service.objects.all(),
             'selected_title': Selected_Title.objects.all(),
             'projects': Projects.objects.all(),
             'persons': Person.objects.all(),
+            'happy_client':Happy_Client.objects.all(),
             'blogs':Blog.objects.all(),
             'contant_us':Contant_Us.objects.all(),
             'message':Message.objects.all(),
@@ -44,13 +39,12 @@ class IndexView(TemplateView):
 
         return context
 
-class MessageCreateVeiw(LoginRequiredMixin, CreateView):
+class IndexView(ContextMixin, CreateView):
+
+    template_name = 'blog/index.html'
     model = Message
     fields = ['name', 'email', 'title', 'message']
-    template_name = 'blog/index.html'
-
+    
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
-    
-

@@ -34,7 +34,7 @@ class Person(models.Model):
     Instagram_Id = models.CharField(max_length=256)
 
 
-class Happy_Client(models.Model):
+class HappyClient(models.Model):
     image = models.ImageField(upload_to='slide_show/images/')
     text = models.CharField(max_length=256)
     author = models.CharField(max_length=256)
@@ -45,13 +45,6 @@ class Blog(models.Model):
     title = models.CharField(max_length=256)
     image = models.ImageField(upload_to='slide_show/images/')
     text = models.CharField(max_length=256)
-
-
-class Contant_Us(models.Model):
-    WebAddress = models.URLField()
-    email = models.EmailField()
-    telephone = models.IntegerField()
-    Address = models.CharField(max_length=256)
 
 
 class Message(models.Model):

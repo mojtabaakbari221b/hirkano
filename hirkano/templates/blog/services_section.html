@@ -1,0 +1,33 @@
+<section class="ftco-section ftco-no-pb ftco-no-pt ftco-services bg-light" id="services-section">
+    <div class="container">
+       <div class="row no-gutters">
+          <div class="col-md-4 ftco-animate py-5 nav-link-wrap">
+             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                {% for service in services %}
+                <a
+                class="nav-link px-4 {% if forloop.counter0 == 0 %}active{% endif %}"
+                id="v-pills-{{service.id}}-tab"
+                data-toggle="pill"
+                href="#v-pills-{{service.id}}"
+                role="tab"
+                aria-controls="v-pills-{{service.id}}" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %}>
+                <span class="mr-3 flaticon-ideas"></span> {{ service.title }}
+                </a>
+                {% endfor %}
+             </div>
+          </div>
+          <div class="col-md-8 ftco-animate p-4 p-md-5 d-flex align-items-center">
+             <div class="tab-content pl-md-5" id="v-pills-tabContent">
+                {% for service in services %}
+                <div class="tab-pane fade  {% if forloop.first %} show {% endif %} {% if forloop.first %} active {% endif %}  py-5" id="v-pills-{{service.id}}" role="tabpanel" aria-labelledby="v-pills-{{service.id}}-tab">
+                   <span class="icon mb-3 d-block flaticon-ideas"></span>
+                   <h2 class="mb-4">{{ service.title }}</h2>
+                   <p> {{ service.text }}</p>
+                   <p><a href="#" class="btn btn-primary px-4 py-3">Learn More</a></p>
+                </div>
+                {% endfor %}
+             </div>
+          </div>
+       </div>
+    </div>
+</section>

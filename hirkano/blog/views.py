@@ -1,5 +1,4 @@
 from django.views.generic.edit import CreateView
-from django.contrib.flatpages.models import FlatPage
 from django.urls import reverse_lazy
 from .models import (
     SlideShow,
@@ -10,6 +9,7 @@ from .models import (
     HappyClient,
     Blog,
     Message,
+    Specialty,
 )
 
 
@@ -18,7 +18,7 @@ class ContextMixin :
         context = super().get_context_data(**kwargs)
         
         context.update({
-            'contact_us': FlatPage.objects.filter(url='/contact_us/')[0],
+            'specialities': Specialty.objects.all(),
             'slide_showes' : SlideShow.objects.all(),
             'services' : Service.objects.all(),
             'selected_title': Selected_Title.objects.all(),

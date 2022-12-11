@@ -1,14 +1,14 @@
 from django.views.generic.edit import CreateView
-from .form import MessageForm
+from django.contrib.flatpages.models import FlatPage
+from django.urls import reverse_lazy
 from .models import (
     SlideShow,
     Service,
     Selected_Title,
     Projects,
     Person,
-    Happy_Client,
+    HappyClient,
     Blog,
-    Contant_Us,
     Message,
 )
 
@@ -18,16 +18,15 @@ class ContextMixin :
         context = super().get_context_data(**kwargs)
         
         context.update({
+            'contact_us': FlatPage.objects.filter(url='/contact_us/')[0],
             'slide_showes' : SlideShow.objects.all(),
             'services' : Service.objects.all(),
             'selected_title': Selected_Title.objects.all(),
             'projects': Projects.objects.all(),
             'persons': Person.objects.all(),
-            'happy_client':Happy_Client.objects.all(),
+            'HappyClient':HappyClient.objects.all(),
             'blogs':Blog.objects.all(),
-            'contant_us':Contant_Us.objects.all(),
             'message':Message.objects.all(),
-            'form': MessageForm,
         })
 
         return context
@@ -35,8 +34,11 @@ class ContextMixin :
 class IndexView(ContextMixin, CreateView):
     template_name = 'blog/index.html'
     model = Message
-    fields = ['name', 'email', 'title', 'message']
-    
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
+    fields = [
+        'name',
+        'email',
+        'title',
+        'message',
+    ]
+    success_url = reverse_lazy('index')
+

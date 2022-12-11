@@ -1,0 +1,38 @@
+version: "3"
+
+
+services:
+  hirkano:
+    build: 
+      context: .
+      dockerfile: docker.conf.d/hirkano/Dockerfile
+    container_name: hirkano
+    volumes:
+      - hirkano_static_volume:/opt/hirkano/hirkano/static
+      - hirkano_media_volume:/opt/hirkano/hirkano/media
+      ./db.sqlite3:/opt/hirkano/db.sqlite3
+    restart: always
+    ports:
+      - "8010:8010"
+    networks:
+      - hirkano_network
+    expose:
+      - 8010
+
+
+volumes:
+  hirkano_static_volume:
+    external:
+      true
+  hirkano_media_volume:
+    external:
+      true
+  hirkano_postgresql_volume:
+    external:
+        true
+
+
+networks:
+  hirkano_network:     
+    external: 
+      true

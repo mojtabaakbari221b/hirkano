@@ -10,7 +10,7 @@ services:
     volumes:
       - hirkano_static_volume:/opt/hirkano/hirkano/static
       - hirkano_media_volume:/opt/hirkano/hirkano/media
-      ./db.sqlite3:/opt/hirkano/db.sqlite3
+      - ./db.sqlite3:/opt/hirkano/db.sqlite3
     restart: always
     ports:
       - "8010:8010"

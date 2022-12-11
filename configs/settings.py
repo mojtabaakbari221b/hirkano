@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'django.contrib.flatpages',
+    'django.contrib.sites',
+
     'hirkano.blog',
 ]
 
@@ -53,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
+SITE_ID = 1
+
 ROOT_URLCONF = 'configs.urls'
 
 TEMPLATES = [
@@ -60,7 +63,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / 'hirkano/templates',
-            BASE_DIR/'hirkano/templates/blog',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

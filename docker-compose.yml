@@ -2,6 +2,17 @@ version: "3"
 
 
 services:
+  hirkano_postgresql:
+    image:
+      postgres:14
+    container_name: hirkano_postgresql
+    volumes:
+      - hirkano_postgresql_volume:/var/lib/postgresql/data
+    restart: always
+    env_file: configs/.env.d/.env
+    networks:
+      - hirkano_network
+  
   hirkano:
     build: 
       context: .
@@ -10,10 +21,11 @@ services:
     volumes:
       - hirkano_static_volume:/opt/hirkano/hirkano/static
       - hirkano_media_volume:/opt/hirkano/hirkano/media
-      - ./db.sqlite3:/opt/hirkano/db.sqlite3
     restart: always
     ports:
       - "8010:8010"
+    networks:
+      - hirkano_network
     expose:
       - 8010
 
@@ -24,4 +36,13 @@ volumes:
       true
   hirkano_media_volume:
     external:
+      true
+  hirkano_postgresql_volume:
+    external:
+        true
+
+
+networks:
+  hirkano_network:     
+    external: 
       true

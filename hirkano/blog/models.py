@@ -13,6 +13,11 @@ class Service(models.Model):
     text = models.CharField(max_length=256)
 
 
+class Specialty(models.Model):
+    title = models.CharField(max_length=256)
+    text = models.CharField(max_length=256)
+
+
 class Selected_Title(models.Model):
     title = models.CharField(max_length=256)
     banner = models.CharField(max_length=256)

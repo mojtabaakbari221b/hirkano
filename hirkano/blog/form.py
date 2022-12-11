@@ -5,5 +5,9 @@ from .models import Message
 class MessageForm(ModelForm):
     class Meta:
         model = Message
-        fields = ['name', 'email', 'title', 'message']
-        
+        fields = [
+            'name',
+            'email',
+            'title',
+            'message',
+        ]

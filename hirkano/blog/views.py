@@ -1,5 +1,6 @@
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from django.contrib import messages
 from constance import config
 from .models import (
     SlideShow,
@@ -44,3 +45,13 @@ class IndexView(ContextMixin, CreateView):
     ]
     success_url = reverse_lazy('index')
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.send_message_to_user()
+        return response
+
+    def send_message_to_user(self):
+        messages.info(
+            self.request, 
+            'Thank you for sharing your opinion with us!',
+        )

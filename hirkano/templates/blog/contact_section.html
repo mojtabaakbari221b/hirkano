@@ -1,3 +1,4 @@
+{% load widget_tweaks %}
 <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
    <div class="container">
       <div class="row justify-content-center mb-5 pb-3">
@@ -45,18 +46,30 @@
             </div>
          </div>
       </div>
-      <div class="row no-gutters block-9">
+      <div style="background-color: #f8f9fa" class="row no-gutters block-9">
          <div class="col-md-6 order-md-last d-flex">
             <form action="" class="bg-light p-5 contact-form " method="post">
                {% csrf_token %}
-               {{ form.as_p }}
+               {% for field in form %}
+                  {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                           <strong>{{ error|escape }}</strong>
+                        </div>
+                  {% endfor %}
+               {% endfor %}
+               {% for field in form %}
+                  <div class="form-group">
+                     <label for="id_{{field.name}}">{{ field.name|capfirst }}</label>
+                     {% render_field field class="form-control" %}
+                  </div>
+               {% endfor %}
                <div class="form-group">
                   <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
                </div>
             </form>
          </div>
          <div class="col-md-6 d-flex">
-            <div id="map" class="bg-white"></div>
+            <iframe style="width: 80%; margin: auto;" height="400" class="bg-white" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=52.67353177070618%2C36.55850663033073%2C52.685505151748664%2C36.5632377275904&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/36.56087/52.67952">View Larger Map</a></small>
          </div>
       </div>
    </div>

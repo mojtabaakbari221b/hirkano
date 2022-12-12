@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'constance',
     'constance.backends.database',
+    'widget_tweaks',
 
     'hirkano.blog',
 ]

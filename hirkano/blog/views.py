@@ -1,5 +1,6 @@
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from constance import config
 from .models import (
     SlideShow,
     Service,
@@ -27,6 +28,7 @@ class ContextMixin :
             'happy_clinets': HappyClient.objects.all(),
             'blogs': Blog.objects.all(),
             'message': Message.objects.all(),
+            'config': config,
         })
 
         return context

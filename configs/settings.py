@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'django.contrib.sites',
 
+    'constance',
+    'constance.backends.database',
+
     'hirkano.blog',
 ]
 
@@ -151,3 +154,48 @@ MEDIA_ROOT = BASE_DIR / 'hirkano/media'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CONSTANCE settings
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+
+CONSTANCE_ADDITIONAL_FIELDS = {
+    'image_field': [
+        'django.forms.ImageField',
+        {},
+    ]
+}
+
+CONSTANCE_CONFIG = {
+    'CONTACT_US_ADDRESS': (
+        'Babol, Noshirvani Uni', 
+        'address of your place.',
+    ),
+    'CONTACT_US_NUMBER': (
+        '+981134704856', 
+        'number of your place.',
+    ),
+    'CONTACT_US_EMAIL': (
+        'contact@inolinx.com', 
+        'email of your place.',
+    ),
+    'CONTACT_US_WEBSITE': (
+        'inolinx.com', 
+        'website of your place.',
+    ),
+    'YEARS_OF_EXPERIENCE': (
+        2, 
+        'years of experience.',
+    ),
+    'ABOUT_LOGO': (
+        'default.png',
+        'about us logo',
+        'image_field',
+    ),
+    'SERVICES_LOGO': (
+        'default.png',
+        'services logo',
+        'image_field',
+    ),
+
+}
